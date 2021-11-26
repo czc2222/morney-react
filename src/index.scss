@@ -1,25 +1,35 @@
 @import-normalize;
 @import "helper";
-*{
-  margin:0;
+* {
+  margin: 0;
   padding: 0;
 }
-*::before{
+
+*::before {
   box-sizing: border-box;
 }
-*::after{
+
+*::after {
   box-sizing: border-box;
 }
-ul,ol{
+
+ul, ol {
   list-style: none;
 }
-a{
+
+a {
   text-decoration: none;
-  color:inherit;
+  color: inherit;
 }
-body{
+
+body {
   font-family: $font-hei;
   font-size: 16px;
   line-height: 1.2;
 
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
 }
