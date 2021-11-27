@@ -1,15 +1,14 @@
 import styled from 'styled-components';
-import {Link,NavLink} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import * as React from 'react';
 import Icon from './Icon';
 
-
-console.log(NavLink);
 
 
 const NavWrapper=styled.div`
   box-shadow: 0 0 3px rgba(0,0,0,0.25);
   line-height: 24px;
+  background: #fff;
   >ul{
     display:flex;
     li{
