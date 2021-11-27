@@ -1,34 +1,38 @@
 import styled from 'styled-components';
 import React from 'react';
-const TagsSection:React.FC=()=>{
- const [tags,setTags]=React.useState<string[]>(['衣','食','住','行'])
-  const [selectTags,setSelectTags]=React.useState<string[]>([])
-  const onAddTag=()=>{
-   const tagName=window.prompt('请输入新标签名')
-    if(tagName!==null){
-      setTags([...tags,tagName])//如果输入的标签名不是空的，在tags中添加
+
+const TagsSection: React.FC = () => {
+  const [tags, setTags] = React.useState<string[]>(['衣', '食', '住', '行']);
+  const [selectTags, setSelectTags] = React.useState<string[]>([]);
+  //添加标签
+  const onAddTag = () => {
+    const tagName = window.prompt('请输入新标签名');
+    if (tagName !== null) {
+      setTags([...tags, tagName]);//如果输入的标签名不是空的，在tags中添加
     }
-  }
-  const ToggleTag=(tag:string)=>{
-      if(selectTags.indexOf(tag)>=0){//选中的Tag中是否有这个tag
-        setSelectTags(selectTags.filter(t=>t!==tag))//如果有，将不是这个tag的数据放入setSelectTags中
-      }else {
-        setSelectTags([...selectTags,tag])//否则直接添加到setSelectTags
-      }
-  }
-  return(
+  };
+  //选中取消标签
+  const ToggleTag = (tag: string) => {
+    if (selectTags.indexOf(tag) >= 0) {//选中的Tag中是否有这个tag
+      setSelectTags(selectTags.filter(t => t !== tag));//如果有，将不是这个tag的数据放入setSelectTags中
+    } else {
+      setSelectTags([...selectTags, tag]);//否则直接添加到setSelectTags
+    }
+  };
+  return (
     <Wrapper>
       <ol>
-        {tags.map(tag=>
-          <li onClick={()=>{ToggleTag(tag)}}
-              className={selectTags.indexOf(tag)>=0 ? 'selected':''}
+        {tags.map(tag =>
+          <li onClick={() => {ToggleTag(tag);}}
+              className={selectTags.indexOf(tag) >= 0 ? 'selected' : ''}
+              key={tag}
           >{tag}</li>
         )}
       </ol>
       <button onClick={onAddTag}>新增标签</button>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
   background: #FFFFFF;
@@ -49,8 +53,9 @@ const Wrapper = styled.section`
       padding: 3px 18px;
       font-size: 14px;
       margin: 8px 12px;
-      &.selected{
-        background:#80b3ff ;
+
+      &.selected {
+        background: #80b3ff;
       }
     }
   }
