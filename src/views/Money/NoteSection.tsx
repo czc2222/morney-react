@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import React, {useRef, useState} from 'react';
 const NoteSection:React.FC=()=>{
   const [note,setNote]=useState('')
-  console.log(note);
   const refInput=useRef<HTMLInputElement>(null)
   const onBlur=()=>{
     if(refInput.current!==null){
