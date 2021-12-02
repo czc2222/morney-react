@@ -9,7 +9,7 @@ const Label=styled.label`
     > input {
       display:block;
       width: 100%;
-      height: 72px;
+      height:44px;
       background: none;
       border: none;
     }
@@ -20,7 +20,7 @@ type Props={
 } & React.InputHTMLAttributes<HTMLInputElement> //继承input标签上的所有类型
 
 const Input:react.FC<Props>=(props)=>{
-  const{label,children,...rest}=props
+  const{label,children,...rest}=props //...rest 所有的属性都在里面
   return(
     <Label>
       <span>{label}</span>
