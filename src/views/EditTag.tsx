@@ -1,7 +1,15 @@
-const EditTag=()=>{
+import {useTags} from '../useTags';
+import {useParams} from 'react-router-dom'
+import react from 'react'
+
+
+const EditTag:react.FC=()=>{
+  const {findTag} =useTags()
+  let {id}=useParams()
+  const tag=findTag(parseInt(id!))
   return(
     <div>
-      编辑标签页
+      {tag.name}
     </div>
   )
 }
