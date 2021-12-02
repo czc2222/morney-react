@@ -3,8 +3,8 @@ import React from 'react';
 import {useTags} from '../../useTags';
 
 type Props={
-  value:string[],
-  onChanged:(newTags:string[])=>void
+  value:number[],
+  onChanged:(newTags:number[])=>void
 }
 
 const TagsSection: React.FC<Props> = (props) => {
@@ -15,25 +15,25 @@ const TagsSection: React.FC<Props> = (props) => {
   const onAddTag = () => {
     const tagName = window.prompt('请输入新标签名');
     if (tagName !== null) {
-      setTags([...tags, tagName]);//如果输入的标签名不是空的，在tags中添加
+      setTags([...tags, {id:Math.random(),name: tagName}]);//如果输入的标签名不是空的，在tags中添加
     }
   };
   //选中取消标签
-  const ToggleTag = (tag: string) => {
-    if (selectTags.indexOf(tag) >= 0) {//选中的Tag中是否有这个tag
-      setSelectTags(selectTags.filter(t => t !== tag));//如果有，将不是这个tag的数据放入setSelectTags中
+  const ToggleTag = (tagId: number) => {
+    if (selectTags.indexOf(tagId) >= 0) {//选中的Tag中是否有这个tag
+      setSelectTags(selectTags.filter(t => t !== tagId));//如果有，将不是这个tag的数据放入setSelectTags中
     } else {
-      setSelectTags([...selectTags, tag]);//否则直接添加到setSelectTags
+      setSelectTags([...selectTags, tagId]);//否则直接添加到setSelectTags
     }
   };
   return (
     <Wrapper>
       <ol>
         {tags.map(tag =>
-          <li onClick={() => {ToggleTag(tag);}}
-              className={selectTags.indexOf(tag) >= 0 ? 'selected' : ''}
-              key={tag}
-          >{tag}</li>
+          <li onClick={() => {ToggleTag(tag.id);}}
+              className={selectTags.indexOf(tag.id) >= 0 ? 'selected' : ''}
+              key={tag.id}
+          >{tag.name}</li>
         )}
       </ol>
       <button onClick={onAddTag}>新增标签</button>

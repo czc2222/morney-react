@@ -13,7 +13,7 @@ const MyLayout = styled(LayoutWrapper)`
 type Category='-'|'+'
 function Money() {
   const [datasource,setDatasource]=useState({
-    tags:[] as string[],
+    tagIds:[] as number[],
     note:'',
     category:'-' as Category,
     amount:0
@@ -27,8 +27,8 @@ function Money() {
   }
   return (
     <MyLayout>
-      <TagsSection value={datasource.tags}
-                   onChanged={(newTags)=>onChanged({tags: newTags})}
+      <TagsSection value={datasource.tagIds}
+                   onChanged={(newTags)=>onChanged({tagIds: newTags})}
       />
       <NoteSection value={datasource.note}
                    onChanged={(newNote)=>onChanged({note:newNote})}
