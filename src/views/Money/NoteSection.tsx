@@ -1,7 +1,13 @@
 import styled from 'styled-components';
-import React, {useRef, useState} from 'react';
-const NoteSection:React.FC=()=>{
-  const [note,setNote]=useState('')
+import React, {useRef} from 'react';
+
+type Props={
+  value:string,
+  onChanged:(newNote:string)=>void
+}
+const NoteSection:React.FC<Props>=(props)=>{
+  const note =props.value
+  const setNote =props.onChanged
   const refInput=useRef<HTMLInputElement>(null)
   const onBlur=()=>{
     if(refInput.current!==null){

@@ -1,5 +1,5 @@
 import LayoutWrapper from '../components/LayoutWrapper';
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {TagsSection} from './Money/TagsSection';
 import {CategorySection} from './Money/CategorySection';
@@ -10,13 +10,36 @@ const MyLayout = styled(LayoutWrapper)`
   display:flex;
   flex-direction: column;
 `
+type Category='-'|'+'
 function Money() {
+  const [datasource,setDatasource]=useState({
+    tags:[] as string[],
+    note:'',
+    category:'-' as Category,
+    amount:0
+  })
+  type Datasource=typeof datasource //typeof 获取值的类型
+  const onChanged=(obj:Partial<Datasource>)=>{//Partial <> 获取部分类型
+    setDatasource({
+      ...datasource,
+      ...obj
+    })
+  }
   return (
     <MyLayout>
-      <TagsSection/>
-      <NoteSection/>
-      <CategorySection/>
-      <NumberPadSection/>
+      <TagsSection value={datasource.tags}
+                   onChanged={(newTags)=>onChanged({tags: newTags})}
+      />
+      <NoteSection value={datasource.note}
+                   onChanged={(newNote)=>onChanged({note:newNote})}
+      />
+      <CategorySection value={datasource.category}
+                       onChanged={(newCategory)=>onChanged({category: newCategory})}
+      />
+      <NumberPadSection value={datasource.amount}
+                        onChanged={(newAmount)=>onChanged({amount: newAmount})}
+                        onOK={()=>{}}
+      />
     </MyLayout>
   );
 }

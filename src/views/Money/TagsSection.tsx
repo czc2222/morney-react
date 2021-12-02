@@ -1,9 +1,15 @@
 import styled from 'styled-components';
 import React from 'react';
 
-const TagsSection: React.FC = () => {
+type Props={
+  value:string[],
+  onChanged:(newTags:string[])=>void
+}
+
+const TagsSection: React.FC<Props> = (props) => {
   const [tags, setTags] = React.useState<string[]>(['衣', '食', '住', '行']);
-  const [selectTags, setSelectTags] = React.useState<string[]>([]);
+  const selectTags =props.value
+  const setSelectTags =props.onChanged
   //添加标签
   const onAddTag = () => {
     const tagName = window.prompt('请输入新标签名');
