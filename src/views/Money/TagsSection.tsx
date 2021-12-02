@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import {useTags} from '../../useTags';
+import {createID} from '../../lib/CreateID';
 
 type Props={
   value:number[],
@@ -15,7 +16,7 @@ const TagsSection: React.FC<Props> = (props) => {
   const onAddTag = () => {
     const tagName = window.prompt('请输入新标签名');
     if (tagName !== null) {
-      setTags([...tags, {id:Math.random(),name: tagName}]);//如果输入的标签名不是空的，在tags中添加
+      setTags([...tags, {id:createID(),name: tagName}]);//如果输入的标签名不是空的，在tags中添加
     }
   };
   //选中取消标签
