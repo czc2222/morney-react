@@ -1,5 +1,5 @@
 import {useTags} from '../useTags';
-import {useParams} from 'react-router-dom'
+import {useParams,useNavigate} from 'react-router-dom'
 import react from 'react'
 import LayoutWrapper from '../components/LayoutWrapper';
 import Icon from '../components/Icon';
@@ -45,12 +45,14 @@ const EditTag:react.FC=()=>{
     </div>
     )
 
-
-
+const navigate=useNavigate()
+  const onBack=()=>{
+    navigate('/tags')
+  }
   return(
     <LayoutWrapper>
       <TopBar>
-        <Icon name="left"/>
+        <Icon name="left" onClick={onBack}/>
         <span>编辑标签</span>
         <Icon/>
       </TopBar>
