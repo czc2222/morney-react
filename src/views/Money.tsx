@@ -44,8 +44,8 @@ function Money() {
 
   }
   return (
-    <MyLayout>
-      <TagsSection value={datasource.tagIds}
+    <MyLayout scrollTop={9999}>
+      <TagsSection  value={datasource.tagIds}
                    onChanged={(newTags)=>onChanged({tagIds: newTags})}
       />
       <NoteSection value={datasource.note}
