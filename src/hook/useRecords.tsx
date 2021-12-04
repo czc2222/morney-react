@@ -7,7 +7,6 @@ type RecordItem ={
   amount:string
   createAt?:string
 }
-type NewRecordItem =Omit<RecordItem, 'createAt'>
 
 const useRecords=()=>{
   const [records,setRecords]=useState<RecordItem[]>([])
