@@ -13,6 +13,7 @@ const MyLayout = styled(LayoutWrapper)`
   display:flex;
   flex-direction: column;
 `
+const CategoryWrapper =styled.div`background:#c4c4c4;`
 type Category='-'|'+'
 
 const defaultData ={
@@ -50,9 +51,12 @@ function Money() {
       <NoteSection value={datasource.note}
                    onChanged={(newNote)=>onChanged({note:newNote})}
       />
-      <CategorySection value={datasource.category}
-                       onChanged={(newCategory)=>onChanged({category: newCategory})}
-      />
+      <CategoryWrapper>
+        <CategorySection value={datasource.category}
+                         onChanged={(newCategory)=>onChanged({category: newCategory})}
+        />
+      </CategoryWrapper>
+
       <NumberPadSection value={datasource.amount}
                         onChanged={(newAmount)=>onChanged({amount: newAmount})}
                         onOK={submit}

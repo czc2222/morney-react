@@ -8,17 +8,21 @@ const defaultTags = [
   {id: 2, name: '食'},
   {id: 3, name: '住'},
   {id: 4, name: '行'}
-];
+]; //设置初始的tag
 
 const useTags = () => {
   const [tags, setTags] = React.useState<{ id: number, name: string }[]>([]);
+
   const findTag = (id: number) => tags.filter(tag => tag.id === id)[0];
+
   useEffect(()=>{
     setTags(JSON.parse(window.localStorage.getItem('tags') || JSON.stringify(defaultTags)) )
-  },[])
+  },[]) //对页面进行挂载
+
   useUpdate(()=>{
     window.localStorage.setItem('tags',JSON.stringify(tags))
-  },[tags])
+  },[tags]) //tags变化之后 就存在 localStorage 里面 ，useUpdate 消除 一开始挂载两次的问题
+
   const addTag = () => {
     const tagName = window.prompt('请输入新标签名');
     if (tagName !== null) {
@@ -34,6 +38,7 @@ const useTags = () => {
   const updateTag = (id: number, name: string) => {
     setTags(tags.map(tag => tag.id === id ? {id, name} : tag));
   };
+
   const deleteTag = (id: number) => {
     setTags(tags.filter(tag=> tag.id !==id ))
   };

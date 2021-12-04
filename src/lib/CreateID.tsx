@@ -1,6 +1,5 @@
-let id=JSON.parse(window.localStorage.getItem('idMax') || '0')
+let id =JSON.parse(window.localStorage.getItem('idMax') || '4')
 const createID=()=>{
-  let id = 4
   id+=1
   window.localStorage.setItem('idMax',JSON.stringify(id))
   return id
