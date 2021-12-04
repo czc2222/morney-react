@@ -1,6 +1,6 @@
 import LayoutWrapper from '../components/LayoutWrapper';
 import * as React from 'react';
-import {useTags} from '../useTags';
+import {useTags} from '../hook/useTags';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import Icon from '../components/Icon';
@@ -31,7 +31,7 @@ const TagList = styled.ol`
 
 
 function Tags() {
-  const {tags} =useTags()
+  const {tags,addTag} =useTags()
   return (
 
     <LayoutWrapper>
@@ -52,7 +52,7 @@ function Tags() {
         <Space/>
         <Space/>
         <Space/>
-        <Button>新增标签</Button>
+        <Button onClick={addTag}>新增标签</Button>
       </Center>
 
     </LayoutWrapper>
