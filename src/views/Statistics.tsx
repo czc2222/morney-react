@@ -36,7 +36,7 @@ function Statistics() {
   const {getName} =useTags()
   const selectedRecords =records.filter(r=>r.category === category) //选出 跟支出或者收入 相应的数据
   const hash:{[key:string]:RecordItem[]} ={} //声明 hash 类型
-  selectedRecords.map(r=> {// 桶排序
+  selectedRecords.forEach(r=> {// 桶排序
     const key= dayjs(r.createAt).format('YYYY-MM-DD')
     if(!(key in hash)){
       hash[key] =[]
@@ -80,7 +80,7 @@ function Statistics() {
             <Date>{beautify(date)}</Date>
             <div>
               {records.map(r =>  {
-                return <Item >
+                return <Item key={r.createAt}>
                   <div className="tagName oneLine" >
                     {
                       r.tagIds
