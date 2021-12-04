@@ -21,7 +21,7 @@ const useTags = () => {
 
   useUpdate(()=>{
     window.localStorage.setItem('tags',JSON.stringify(tags))
-  },[tags]) //tags变化之后 就存在 localStorage 里面 ，useUpdate 消除 一开始挂载两次的问题
+  },tags) //tags变化之后 就存在 localStorage 里面 ，useUpdate 消除 一开始挂载两次的问题
 
   const addTag = () => {
     const tagName = window.prompt('请输入新标签名');

@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {useUpdate} from './useUpdate';
-type RecordItem ={
+export  type RecordItem ={
   tagIds:number[]
   note:string
   category:'-'|'+'
@@ -15,7 +15,7 @@ const useRecords=()=>{
   },[])
   useUpdate(()=>{
     window.localStorage.setItem('record',JSON.stringify(records))
-  },[records])
+  },records)
   const addRecord=(record:RecordItem)=>{
     const newRecord={...record,createAt:(new Date()).toISOString()}
      setRecords([...records,newRecord])
