@@ -19,7 +19,7 @@ const defaultData ={
   tagIds:[] as number[],
   note:'',
   category:'-' as Category,
-  amount:0
+  amount:'0'
 }
 
 function Money() {
@@ -33,9 +33,14 @@ function Money() {
   }
   const {addRecord}=useRecords()
   const submit=()=>{
-     addRecord(datasource)
-     alert('已保存')
-     setDatasource(defaultData)
+    if(datasource.tagIds.length === 0){
+      alert('请至少选择一个标签')
+    }else {
+      addRecord(datasource)
+      alert('已保存')
+      setDatasource(defaultData)
+    }
+
   }
   return (
     <MyLayout>

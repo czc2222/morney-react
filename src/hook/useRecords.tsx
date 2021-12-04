@@ -4,7 +4,7 @@ type RecordItem ={
   tagIds:number[]
   note:string
   category:'-'|'+'
-  amount:number
+  amount:string
   createAt?:string
 }
 type NewRecordItem =Omit<RecordItem, 'createAt'>

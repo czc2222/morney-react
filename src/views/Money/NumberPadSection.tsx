@@ -4,22 +4,22 @@ import {generateOutput} from './numberPadSection/generateOutput';
 
 
 type Props={
-  value:number,
-  onChanged:(newAmount:number)=>void
+  value:string,
+  onChanged:(newAmount:string)=>void
   onOK?:()=>void
 }
 
 const NumberPadSection:React.FC<Props>=(props)=>{
-  const output =props.value.toString()
+  const output =props.value
   const _setOutput=props.onChanged
   const setOutput =(output:string)=>{
     let value
     if(output.length > 16){
-      value = parseFloat(output.slice(0,16))
+      value = output.slice(0,16)
     }else if(output.length ===0){
-      value = 0
+      value = '0'
     }else{
-      value =parseFloat(output)
+      value =output
     }
     _setOutput(value)
   }
