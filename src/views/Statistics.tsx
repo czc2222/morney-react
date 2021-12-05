@@ -44,6 +44,7 @@ function Statistics() {
       hash[key].push(r)
     }
   })
+
   const array =Object.entries(hash).sort((a,b)=>{ //计数排序
     if(a[0] === b[0]){return 0}
     if(a[0] > b[0]) {return -1}
@@ -76,7 +77,7 @@ function Statistics() {
         />
       </CategoryWrapper>
       {array.map(([date,records])=>
-          <div>
+          <div key={date}>
             <Date>{beautify(date)}</Date>
             <div>
               {records.map(r =>  {
