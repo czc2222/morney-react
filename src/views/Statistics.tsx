@@ -35,16 +35,18 @@ function Statistics() {
   const {records}=useRecords()
   const {getName} =useTags()
   const selectedRecords =records.filter(r=>r.category === category) //选出 跟支出或者收入 相应的数据
+
   const hash:{[key:string]:RecordItem[]} ={} //声明 hash 类型
+
   selectedRecords.forEach(r=> {// 桶排序
     const key= dayjs(r.createAt).format('YYYY-MM-DD')
     if(!(key in hash)){
       hash[key] =[]
-    }else {
-      hash[key].push(r)
     }
-  })
+    hash[key].push(r)
 
+  })
+  console.log(hash);
   const array =Object.entries(hash).sort((a,b)=>{ //计数排序
     if(a[0] === b[0]){return 0}
     if(a[0] > b[0]) {return -1}
